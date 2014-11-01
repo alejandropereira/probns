@@ -8,19 +8,9 @@
 </head>
 <body>
 
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
-
-<nav>
-	<ul>
-		<% if user_signed_in? %>
-			<li><%= current_user.email %></li>
-			<li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
-		<% end %>
-	</ul>
-</nav>
-
+<h1>Nuestro nuevo sitio</h1>
 <%= yield %>
 
 </body>
 </html>
+
