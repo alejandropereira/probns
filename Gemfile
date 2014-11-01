@@ -17,3 +17,5 @@ group :development, :test do
 end
 
 gem 'capybara'
+
+gem 'devise'
