@@ -2,6 +2,6 @@ class PagesController < ApplicationController
 	layout 'front'
 
 	def home
-		@listings = Listing.all
+		@listings = Listing.publish
 	end
 end

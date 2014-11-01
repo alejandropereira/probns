@@ -16,6 +16,8 @@ group :development, :test do
 	  gem 'rspec-rails', '~> 3.0.0'
 end
 
+gem 'state_machine'
+
 gem 'carrierwave'
 
 gem 'capybara'

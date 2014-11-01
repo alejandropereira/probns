@@ -2,7 +2,12 @@ Rails.application.routes.draw do
   devise_for :users
 	root 'pages#home'
 
-  resources :listings
+  resources :listings do
+		member do
+			get 'publish'
+			get 'unpublish'
+		end
+	end
 
 	get '/admin' => 'listings#index'
 

@@ -1,11 +1,11 @@
 class ListingsController < ApplicationController
-  before_action :set_listing, only: [:show, :edit, :update, :destroy]
+  before_action :set_listing, only: [:show, :edit, :update, :destroy, :publish, :unpublish]
 	before_action :authenticate_user!
 
   # GET /listings
   # GET /listings.json
   def index
-    @listings = Listing.all
+		@listings = current_user.listings.all
   end
 
   # GET /listings/1
@@ -52,6 +52,16 @@ class ListingsController < ApplicationController
     end
   end
 
+	def publish
+		@listing.publish!
+		redirect_to listings_path, notice: "You have successfully publish your listing"
+	end
+
+	def unpublish
+		@listing.unpublish!
+		redirect_to listings_path, notice: "You have successfully unpublished your listing"
+	end
+
   # DELETE /listings/1
   # DELETE /listings/1.json
   def destroy
@@ -70,6 +80,6 @@ class ListingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def listing_params
-      params.require(:listing).permit(:title, :description, :feature_image, :state)
+      params.require(:listing).permit(:title, :description, :feature_image)
     end
 end
